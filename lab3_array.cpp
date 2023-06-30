@@ -3,45 +3,7 @@
 using namespace std;
 
 
-/**
- * The function BinaryMultiply takes two binary numbers as input and returns their product as a binary
- * number.
- * 
- * @param multplicand An array representing the first binary number.
- * @param multiplier The parameter `multiplier` represents the second binary number that you want to
- * multiply with `multplicand`.
- * @param multiplicandSizeThe size of the first binary number (multplicand).
- * @param multiplierSize The parameter "multiplierSize" represents the size of the second binary number, "multiplier".
- * @param resultSize The parameter `resultSize` represents the size of the resulting binary array after
- * multiplying `multplicand` and `multiplier`.
- * 
- * @return a pointer to an integer array.
- */
-int *BinaryMultiply(int *multplicand, int *multiplier, int multiplicandSize, int multiplierSize, int resultSize)
-{
-    int *result = new int[resultSize];
-    int carry = 0, weight = 1, raw_sum;
-    
-    for (int i = 0; i < resultSize; i++)
-    {
-        result[i] = 0;
-    }
-
-    for (int i = multiplicandSize-1; i >= 0; i--)
-    {
-        for (int j = multiplierSize-1; j >= 0; j--)
-        {
-            raw_sum = multplicand[i] * multiplier[j] + result[i+j+1] + carry;
-            result[i+j+1] = raw_sum % 2;
-            carry = raw_sum / 2;
-        }
-        result[i] = carry;
-        carry = 0;
-    }
-
-    return result;
-}
-
+int *BinaryMultiply(int *, int *, int, int, int);
 
 int main()
 {
@@ -84,3 +46,41 @@ int main()
     return 0;
 }
 
+/**
+ * The function BinaryMultiply takes two binary numbers as input and returns their product as a binary
+ * number.
+ * 
+ * @param multplicand An array representing the first binary number.
+ * @param multiplier The parameter `multiplier` represents the second binary number that you want to
+ * multiply with `multplicand`.
+ * @param multiplicandSizeThe size of the first binary number (multplicand).
+ * @param multiplierSize The parameter "multiplierSize" represents the size of the second binary number, "multiplier".
+ * @param resultSize The parameter `resultSize` represents the size of the resulting binary array after
+ * multiplying `multplicand` and `multiplier`.
+ * 
+ * @return a pointer to an integer array.
+ */
+int *BinaryMultiply(int *multplicand, int *multiplier, int multiplicandSize, int multiplierSize, int resultSize)
+{
+    int *result = new int[resultSize];
+    int carry = 0, weight = 1, raw_sum;
+    
+    for (int i = 0; i < resultSize; i++)
+    {
+        result[i] = 0;
+    }
+
+    for (int i = multiplicandSize-1; i >= 0; i--)
+    {
+        for (int j = multiplierSize-1; j >= 0; j--)
+        {
+            raw_sum = multplicand[i] * multiplier[j] + result[i+j+1] + carry;
+            result[i+j+1] = raw_sum % 2;
+            carry = raw_sum / 2;
+        }
+        result[i] = carry;
+        carry = 0;
+    }
+
+    return result;
+}
