@@ -21,7 +21,7 @@ int main()
     {
         lsb = multiplier % 10;
         if (lsb)
-            partial_sum = add(partial_sum, static_cast<long long>(weight * multiplicand));
+            partial_sum = add(partial_sum, static_cast<long long>(weight) * multiplicand);
        
         multiplier /= 10;
         weight *= 10;
@@ -32,6 +32,15 @@ int main()
     return 0;
 }
 
+/**
+ * The function takes two binary numbers as input and returns their sum as a binary number.
+ * 
+ * @param binary_1 The first binary number to be added.
+ * @param binary_2 The parameter `binary_2` represents the second binary number that you want to add to
+ * `binary_1`.
+ * 
+ * @return the sum of two binary numbers represented as long long integers.
+ */
 long long add(long long binary_1, long long binary_2)
 {
     int carry = 0;
