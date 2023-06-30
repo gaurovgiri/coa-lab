@@ -67,6 +67,18 @@ int main()
     return 0;
 }
 
+/**
+ * The function takes two binary numbers represented as arrays of integers and adds them together,
+ * storing the result in another array, while also returning the carry value.
+ * 
+ * @param b1 An array of integers representing the binary digits of the first number.
+ * @param b2 The parameter `b2` is a pointer to an array of integers.
+ * @param sum The `sum` parameter is an array of integers that will store the result of adding two
+ * binary numbers `b1` and `b2`.
+ * @param n The parameter `n` represents the number of bits in the binary numbers `b1` and `b2`.
+ * 
+ * @return the value of the carry after adding the binary numbers.
+ */
 int add(int *b1, int *b2, int *sum, int n)
 {
     int carry = 0;
@@ -78,6 +90,16 @@ int add(int *b1, int *b2, int *sum, int n)
     }
     return carry;
 }
+/**
+ * The function `getTwosComplement` takes a binary number represented as an array of integers and
+ * returns its two's complement.
+ * 
+ * @param bin The parameter "bin" is an array of integers representing a binary number.
+ * @param n The parameter `n` represents the size of the binary array `bin`.
+ * 
+ * @return a pointer to an array of integers, which represents the two's complement of the input binary
+ * number.
+ */
 
 int *getTwosComplement(int *bin, int n)
 {
@@ -98,6 +120,18 @@ int *getTwosComplement(int *bin, int n)
     return twosComplement;
 }
 
+/**
+ * The function calculates the difference between two binary numbers using two's complement.
+ * 
+ * @param b1 A pointer to an array of integers representing the first binary number.
+ * @param b2 b2 is a pointer to an array of integers representing a binary number.
+ * @param diff The "diff" parameter is a pointer to an integer array that will store the result of
+ * subtracting the two input arrays "b1" and "b2".
+ * @param n The parameter `n` represents the size of the arrays `b1`, `b2`, and `diff`. It indicates
+ * the number of elements in each array.
+ * 
+ * @return the value of the variable "carry".
+ */
 int sub(int *b1, int *b2, int *diff, int n)
 {
     int carry = 0;

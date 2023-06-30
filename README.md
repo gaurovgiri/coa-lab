@@ -4,4 +4,5 @@
 
 - [Lab2](https://github.com/gaurovgiri/coa_lab/blob/master/lab2.cpp) Addition and Subtraction of two unsigned binary numbers
 - [Lab3](https://github.com/gaurovgiri/coa_lab/blob/master/lab3.cpp) Multiplication of two unsigned binary numbers
+- [Lab3_array](https://github.com/gaurovgiri/coa_lab/blob/master/lab3_array.cpp) Multiplication of two unsigned binary numbers using array
 
