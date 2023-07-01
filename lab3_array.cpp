@@ -1,14 +1,13 @@
 #include <iostream>
 
 using namespace std;
-
-
-int *BinaryMultiply(int *, int *, int, int, int);
+void BinaryMultiply(int *, int *, int *, int, int, int);
 
 int main()
 {
-    int multiplicandSize, multiplierSize, resultSize;
+
     int *multplicand, *multiplier, *result;
+    int multiplicandSize, multiplierSize, resultSize;
 
     cout << "Enter the size of the Multiplicand: ";
     cin >> multiplicandSize;
@@ -16,30 +15,30 @@ int main()
     cout << "Enter the size of the Multiplier: ";
     cin >> multiplierSize;
 
-    resultSize = multiplicandSize+ multiplierSize;
+    resultSize = multiplicandSize + multiplierSize;
 
     multplicand = new int[multiplicandSize];
     multiplier = new int[multiplierSize];
+    result = new int[resultSize];
 
-    cout << "Multiplicand: ";
-    for (int bit_pos = multiplicandSize-1; bit_pos >= 0; bit_pos--)
+    cout << "Enter the Multiplicand: ";
+    for (int i = 0; i < multiplicandSize; i++)
     {
-    
-        cin >> multplicand[bit_pos];
+        cin >> multplicand[i];
     }
 
-    cout << "Multiplier: ";
-    for (int bit_pos = multiplierSize-1; bit_pos >= 0; bit_pos--)
+    cout << "Enter the Multiplier: ";
+    for (int i = 0; i < multiplierSize; i++)
     {
-        cin >> multiplier[bit_pos];
+        cin >> multiplier[i];
     }
 
-    result = BinaryMultiply(multplicand, multiplier, multiplicandSize, multiplierSize,resultSize);
+    BinaryMultiply(multplicand, multiplier, result, multiplicandSize, multiplierSize, resultSize);
 
-    cout << "Result: ";
-    for (int bit_pos = 0; bit_pos < resultSize; bit_pos++)
+    cout << "Product: ";
+    for (int i = 0; i < resultSize; i++)
     {
-        cout << result[bit_pos];
+        cout << result[i];
     }
     cout << endl;
 
@@ -47,40 +46,39 @@ int main()
 }
 
 /**
- * The function BinaryMultiply takes two binary numbers as input and returns their product as a binary
- * number.
+ * The BinaryMultiply function performs binary multiplication on two arrays of integers and stores the
+ * result in another array.
  * 
- * @param multplicand An array representing the first binary number.
- * @param multiplier The parameter `multiplier` represents the second binary number that you want to
- * multiply with `multplicand`.
- * @param multiplicandSizeThe size of the first binary number (multplicand).
- * @param multiplierSize The parameter "multiplierSize" represents the size of the second binary number, "multiplier".
- * @param resultSize The parameter `resultSize` represents the size of the resulting binary array after
- * multiplying `multplicand` and `multiplier`.
- * 
- * @return a pointer to an integer array.
+ * @param multiplicand An array representing the binary digits of the multiplicand.
+ * @param multiplier An array representing the binary representation of the multiplier. Each element of
+ * the array can be either 0 or 1.
+ * @param result The `result` parameter is an array that will store the result of the binary
+ * multiplication.
+ * @param multiplicandSize The size of the array `multiplicand`, which represents the number being
+ * multiplied.
+ * @param multiplierSize The parameter `multiplierSize` represents the size of the array `multiplier`.
+ * It indicates the number of elements in the `multiplier` array.
+ * @param resultSize The parameter `resultSize` represents the size of the `result` array. It indicates
+ * the number of bits required to store the result of the binary multiplication.
  */
-int *BinaryMultiply(int *multplicand, int *multiplier, int multiplicandSize, int multiplierSize, int resultSize)
+void BinaryMultiply(int *multiplicand, int *multiplier, int *result, int multiplicandSize, int multiplierSize, int resultSize)
 {
-    int *result = new int[resultSize];
-    int carry = 0, raw_sum;
-    
+    int rawSum, carry = 0;
     for (int i = 0; i < resultSize; i++)
     {
         result[i] = 0;
     }
 
-    for (int i = multiplicandSize-1; i >= 0; i--)
+    for (int i = multiplierSize - 1; i >= 0; i--)
     {
-        for (int j = multiplierSize-1; j >= 0; j--)
+        if (multiplier[i] == 1)
         {
-            raw_sum = multplicand[i] * multiplier[j] + result[i+j+1] + carry;
-            result[i+j+1] = raw_sum % 2;
-            carry = raw_sum / 2;
+            for (int j = multiplicandSize - 1; j >= 0; j--)
+            {
+                rawSum = multiplicand[j] + result[i + j + 1] + carry;
+                result[i + j + 1] = rawSum % 2;
+                carry = rawSum / 2;
+            }
         }
-        result[i] = carry;
-        carry = 0;
     }
-
-    return result;
 }
