@@ -35,7 +35,7 @@ int main()
 
     BinaryMultiply(multplicand, multiplier, result, multiplicandSize, multiplierSize, resultSize);
 
-    cout << "Product: ";
+    cout << "Result: ";
     for (int i = 0; i < resultSize; i++)
     {
         cout << result[i];
