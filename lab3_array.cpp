@@ -63,7 +63,7 @@ int main()
 int *BinaryMultiply(int *multplicand, int *multiplier, int multiplicandSize, int multiplierSize, int resultSize)
 {
     int *result = new int[resultSize];
-    int carry = 0, weight = 1, raw_sum;
+    int carry = 0, raw_sum;
     
     for (int i = 0; i < resultSize; i++)
     {
