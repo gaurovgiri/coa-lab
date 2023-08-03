@@ -6,4 +6,4 @@
 - [Lab3](https://github.com/gaurovgiri/coa_lab/blob/master/lab3.cpp) Multiplication of two unsigned binary numbers
 - [Lab3_array](https://github.com/gaurovgiri/coa_lab/blob/master/lab3_array.cpp) Multiplication of two unsigned binary numbers using array
 - [Lab4](https://github.com/gaurovgiri/coa_lab/blob/master/lab4.cpp) Restoring division algorithm 
-
+- [Lab5](https://github.com/gaurovgiri/coa_lab/blob/master/lab5.cpp) Non-Restoring division algorithm
