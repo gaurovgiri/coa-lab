@@ -69,6 +69,15 @@ int main()
     }
 }
 
+/**
+ * The function takes two arrays of integers and adds them together, returning the carry value.
+ * 
+ * @param a An array of integers representing the first binary number.
+ * @param b The parameter "b" is an array of integers.
+ * @param n The number of elements in the arrays a[] and b[].
+ * 
+ * @return the carry value after adding the two arrays.
+ */
 int add(int a[], int b[], int n)
 {
     int carry = 0;
@@ -82,6 +91,13 @@ int add(int a[], int b[], int n)
     return carry;
 }
 
+/**
+ * The function `get_twos_complement` takes an array of integers and converts it to its two's
+ * complement representation.
+ * 
+ * @param a An array of integers representing a binary number in two's complement form.
+ * @param n The parameter `n` represents the size of the array `a[]`.
+ */
 void get_twos_complement(int a[], int n)
 {
     for (int i = 0; i < n; i++)
@@ -105,6 +121,14 @@ void get_twos_complement(int a[], int n)
     add(a,one, n);
 }
 
+/**
+ * The function "shift_left" shifts the elements of array "a" and array "q" to the left by one
+ * position.
+ * 
+ * @param a An array of integers that represents the elements to be shifted.
+ * @param q An array of integers representing the elements to be shifted.
+ * @param n The parameter `n` represents the size of the arrays `a` and `q`.
+ */
 void shift_left(int a[], int q[], int n)
 {
     for (int i = 0; i < n; i++)

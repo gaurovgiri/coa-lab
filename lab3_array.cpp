@@ -1,81 +1,87 @@
+
 #include <iostream>
 
 using namespace std;
 
-/**
- * The function `multiplyBinary` performs binary multiplication on two arrays of binary digits and
- * stores the result in another array.
- * 
- * @param multiplicand An array representing the binary digits of the multiplicand. The size of the
- * array is given by size1.
- * @param size1 The parameter `size1` represents the size of the `multiplicand` array.
- * @param multiplier The `multiplier` parameter is an array of integers representing a binary number.
- * Each element in the array can be either 0 or 1.
- * @param size2 The parameter `size2` represents the size of the `multiplier` array.
- * @param result The `result` parameter is an array that will store the result of the binary
- * multiplication.
- */
-void multiplyBinary(int multiplicand[], int size1, int multiplier[], int size2, int result[]) {
-    int sizeResult = size1 + size2;
+void ellipseMidPoint()
+{
+    int xCenter = 19;
+    int yCenter = 10;
+    int rx = 12;
+    int ry = 7;
+    int k = 0;
 
-    // Initialize the result array with zeros
-    for (int i = 0; i < sizeResult; ++i) {
-        result[i] = 0;
-    }
+    //plotting for 1st region of 1st quardant and the slope will be < -1
+     //----------------------Region-1------------------------//
+    float x = 0;
+    float y = ry;//(0,ry) ---
+    float p1 = ry * ry - (rx * rx)* ry + (rx * rx) * (0.25) ;
+    //slope
+    float dx = 2 * (ry * ry) * x;
+    float dy = 2 * (rx * rx) * y;
+    
+    cout << "Region 1" << endl;
+    cout << "k\t p1k\t xK+1,yK+1\t dx\t dy\t" << endl;
+    while(dx < dy)
+    {
+        //plot (x,y)
 
-    // Perform binary multiplication
-    for (int i = size1 - 1; i >= 0; --i) {
-        for (int j = size2 - 1; j >= 0; --j) {
-            int product = multiplicand[i] * multiplier[j];
-
-            // Add the product to the result array
-            result[i + j + 1] += product;
-            result[i + j] += result[i + j + 1] / 2; // Add carry to next bit
-            result[i + j + 1] %= 2; // Remove carry from current bit
+        cout << (k++) << "\t" << p1 << "\t    ";
+        cout << x << " " << y << "\t\t" ;
+        
+        if(p1 < 0)
+        {
+            x = x + 1;
+            dx = 2 * (ry * ry) * x;
+            p1 = p1 + dx + (ry * ry);
         }
+        else
+        {
+            x = x + 1;
+            y = y - 1;
+            dx =  2 * (ry * ry) * x;
+            dy =  2 * (rx * rx) * y;
+             p1 = p1 + dx - dy +(ry * ry);
+        }
+        cout << dx << "\t" << dy << endl;
     }
+    //ploting for 2nd region of 1st quardant and the slope will be > -1
+     //----------------------Region-2------------------------//
+    float p2 = (ry * ry )* ( x +  0.5) * ( x +  0.5) +  ( rx * rx) * ( y - 1) * ( y - 1) - (rx * rx )* (ry * ry);
+    k = 0;
+    cout << endl << "Region 2" << endl;
+    cout << "k\t p2k\t xK+1,yK+1\t dx\t dy\t" << endl;
+    while(y > 0)
+    {
+        //plot (x,y)
+        
+         cout << k++ << "\t" << p2 << "\t    ";
+        cout << x << " " << y << "\t\t" ;
+        if(p2 > 0)
+        {
+            x = x;
+            y = y - 1;
+            dy = 2 * (rx * rx) * y;
+            //dy = 2 * rx * rx *y;
+            p2 = p2 - dy + (rx * rx);
+        }
+        else
+        {
+            x = x + 1;
+            y = y - 1;
+            dy = dy - 2 * (rx * rx) ;
+            dx = dx + 2 * (ry * ry) ;
+            p2 = p2 + dx -
+            dy + (rx * rx);
+        }
+    cout << dx << "\t" << dy << endl;
+
+    }
+
 }
 
-int main() {
-    int size1, size2;
 
-    // Read the size of the multiplicand
-cout << "Enter the size of the multiplicand: ";
-    cin >> size1;
-
-    // Read the size of the multiplier
-    cout << "Enter the size of the multiplier: ";
-    cin >> size2;
-
-    // Read the multiplicand
-    int multiplicand[size1];
-    cout << "Enter the multiplicand: ";
-    for (int i = 0; i < size1; ++i) {
-        cin >> multiplicand[i];
-    }
-
-    // Read the multiplier
-    int multiplier[size2];
-    cout << "Enter the multiplier: \t";
-    for (int i = 0; i < size2; ++i) {
-        cin >> multiplier[i];
-    }
-
-    // Calculate the size of the result array
-    int sizeResult = size1 + size2;
-
-    // Initialize the result array
-    int result[sizeResult];
-
-    // Multiply the binary numbers
-    multiplyBinary(multiplicand, size1, multiplier, size2, result);
-
-    // Display the product array
-    cout << "Product array: ";
-    for (int i = 0; i < sizeResult; ++i) {
-        cout << result[i] << " ";
-    }
-    cout << endl;
-
+int main(){
+    ellipseMidPoint();
     return 0;
 }
