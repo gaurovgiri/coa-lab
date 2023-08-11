@@ -9,7 +9,8 @@ void shift_left(int[], int[], int);
 int main()
 {
     int n;
-    cout << "Enter the number of bits: "; 
+    cout << "GAURAV GIRI (KAN077BCT034)" << endl;
+    cout << "Enter the number of bits: ";
     cin >> n;
 
     int count = n;
